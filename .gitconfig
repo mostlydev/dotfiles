@@ -1,0 +1,59 @@
+[user]
+	name = Wojtek
+	email = wojtek@grabski.ca
+	signingkey = 44A284C397A1F694
+[alias]
+	st = status
+  ci = commit
+	br = branch
+	co = checkout
+	df = diff
+  lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+	who = shortlog -s --
+  aliases = !git config --get-regexp 'alias.*' | colrm 1 6 | sed 's/[ ]/ = /'
+  ui = auto
+[core]
+	excludesfile = /Users/wojtek/.gitignore
+  autocrlf = input
+  quotepath = false
+  whitespace = trailing-space,space-before-tab
+	editor = /usr/bin/vim
+[gui]
+	recentrepo = /Users/wojtek/Dropbox/Programming/ruby/ypg-sites
+[mergetool]
+	keepBackup = true
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[diff "html16"]
+  textconv = ~/bin/u16to8
+[apply]
+  whitespace = fix
+[push]
+	default = current
+[filter "gitignore"]
+	clean = "sed '/#gitignore$/'d"
+	smudge = cat
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[commit]
+	gpgSign = false
+	template = /Users/wojtek/.stCommitMsg
+#[http]
+#  proxy = socks5h://127.0.0.1:9050
+
+[gpg]
+	program = gpg2
+[pull]
+	rebase = false
+[init]
+	defaultBranch = master
+[checkout]
+	defaultRemote = origin
+
